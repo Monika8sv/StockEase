@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stockease-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: stockease-frontend
+  template:
+    metadata:
+      labels:
+        app: stockease-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: stockease-frontend:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

@@ -16,7 +16,7 @@ import {
 
 import "./App.css";
 
-const API = "http://localhost:8080/api/products";
+const API = "/api/products";
 
 function App() {
   const [products, setProducts] = useState([]);
