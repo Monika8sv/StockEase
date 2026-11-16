@@ -1,0 +1,8 @@
+---
+- name: Deploy StockEase using Ansible
+  hosts: local
+  connection: local
+  become: false
+
+  roles:
+    - stockease

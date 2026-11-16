@@ -1,0 +1,15 @@
+---
+- name: Check Kubernetes cluster
+  command: kubectl get nodes
+  register: cluster_status
+  changed_when: false
+
+- name: Display Kubernetes cluster status
+  debug:
+    var: cluster_status.stdout
+
+- name: Apply StockEase Kubernetes configurations
+  command: kubectl apply -f "{{ manifest_directory }}"
+  register: deployment_result
+  changed_when: "'configured' in deployment_result.stdout or 'created' in deployment_result.stdout"
+  notify: Restart StockEase deployments
