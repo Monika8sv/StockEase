@@ -27,8 +27,8 @@ pipeline {
 
         stage('Build Docker Images') {
             steps {
-                sh 'docker build -t stockease-backend:latest .'
-                sh 'docker build -t stockease-frontend:latest ./frontend'
+                sh 'docker build -t stockease-backend:${BUILD_NUMBER} -t stockease-backend:latest .'
+                sh 'docker build -t stockease-frontend:${BUILD_NUMBER} -t stockease-frontend:latest ./frontend'
             }
         }
     }
